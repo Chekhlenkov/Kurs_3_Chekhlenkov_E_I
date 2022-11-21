@@ -14,6 +14,7 @@ def get_all(name = posts):
     except:
         return "not_found"
 
+
 def get_posts_by_user(user_name, link = posts):
     found_posts = []
     users = []
@@ -26,6 +27,7 @@ def get_posts_by_user(user_name, link = posts):
         return found_posts
     else:
         return "ValueError"
+
 
 def get_comments_by_post_id(post_id, link = comments, linker = posts):
     found_comments = []
@@ -41,6 +43,7 @@ def get_comments_by_post_id(post_id, link = comments, linker = posts):
     except:
         return "ValueError"
 
+
 def search_for_posts(query, link = posts):
     found_posts = []
     if len(found_posts)<=10:
@@ -48,6 +51,7 @@ def search_for_posts(query, link = posts):
             if query.lower() in post["content"].lower().split(' '):
                 found_posts.append(post)
     return found_posts
+
 
 def get_post_by_pk(pk, link=posts):
     for post in get_all(link):

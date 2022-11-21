@@ -12,19 +12,6 @@ def main_page():
     posts = get_all()
     return render_template("index.html", posts=posts)
 
-@main_blueprint.route('/api/')
-def api_main_page():
-    posts = get_all()
-    log.info("api - > {len(posts)}")
-    return jsonify(posts)
-
-@main_blueprint.route('/api/post/<int:pk>/')
-def watch_post_api(pk):
-    post = get_post_by_pk(pk)
-    comments = get_comments_by_post_id(pk)
-    count_comments = len(comments)
-    log.info("api_posts - > {pk}")
-    return jsonify(post, comments, count_comments)
 
 @main_blueprint.route('/post/<int:pk>/')
 def watch_post(pk):

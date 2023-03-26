@@ -1,0 +1,11 @@
+[Unit]
+Description=inst
+After=network.target
+
+[Service]
+WorkingDirectory=/home/podhvost/inst/
+ExecStart=/home/podhvost/inst/venv/bin/python app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

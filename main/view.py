@@ -37,3 +37,8 @@ def search_posts():
 def posts_name(poster_name):
     posts = get_posts_by_user(poster_name)
     return render_template("user-feed.html", posts=posts)
+
+
+@main_blueprint.route('/ping', methods=['GET'])
+def ping():
+    return 'pong'

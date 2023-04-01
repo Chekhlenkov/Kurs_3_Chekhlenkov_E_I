@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify
 
 import logger
+from db import db
 from utils import get_all, get_post_by_pk, get_comments_by_post_id, search_for_posts, get_posts_by_user
 
 
@@ -42,3 +43,12 @@ def posts_name(poster_name):
 @main_blueprint.route('/ping', methods=['GET'])
 def ping():
     return 'pong'
+
+@main_blueprint.route('/test_db', methods=['GET'])
+def test_db():
+    result = db.session.execute(
+        '''
+        SELECT 1;
+        '''
+    ).scalar()
+    return jsonify({'result': result})

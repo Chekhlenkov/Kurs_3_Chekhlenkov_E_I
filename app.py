@@ -1,12 +1,17 @@
 from flask import Flask, jsonify
 
+
 import logger
+from config import Config
+from db import db
 from main.view import main_blueprint
 from utils import get_post_by_pk, get_all
 
 log = logger.get_logger('api')
 
 app = Flask(__name__)
+app.config.from_object(Config)
+db.init_app(app)
 app.register_blueprint(main_blueprint)
 
 @app.errorhandler(500)
